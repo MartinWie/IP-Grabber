@@ -14,7 +14,7 @@ class IPHandler(
 ) {
     companion object : KLogging()
 
-    @GetMapping("/ip/")
+    @GetMapping("/ip")
     @ResponseStatus(HttpStatus.OK)
     fun returnIP(request: HttpServletRequest): String {
         IPHandler.logger.info { "Endpoint /ip was called " }
