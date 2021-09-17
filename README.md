@@ -43,11 +43,13 @@ Date raw: 1631921464932
 ```
 
 The browser will only display an "HTTP ERROR 404" to confuse the attacker.
+
 In combination with the /photo/... endpoint name, you can probably make up a story to social engineer him/her to click a link.
 
 ## Quick usage 
 
-Download the latest release 
+Download the latest release.
+
 Run it on any server with 
 
 ```
