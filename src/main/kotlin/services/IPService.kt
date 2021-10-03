@@ -17,7 +17,7 @@ class IPService {
             hostName = request.remoteHost,
             address = request.remoteAddr,
             port = "${request.remotePort}",
-            userAgent = request.getHeader("user-agent"),
+            userAgent = request.getHeader("user-agent") ?: "not found",
             dateFormatted = Date(request.session.lastAccessedTime),
             dateRaw = request.session.lastAccessedTime
         )
