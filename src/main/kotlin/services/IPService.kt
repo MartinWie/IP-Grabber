@@ -9,29 +9,43 @@ import javax.servlet.http.HttpServletRequest
 class IPService {
     companion object : KLogging()
 
-    fun getCallerIP(request: HttpServletRequest): String {
-        // IPHandler.logger.info { request.remoteHost }
-        // IPHandler.logger.info { request.remoteAddr }
-        // IPHandler.logger.info { request.remotePort }
-        // IPHandler.logger.info { request.getHeader("user-agent") }
-        // IPHandler.logger.info { Date(request.session.lastAccessedTime) }
-        // IPHandler.logger.info { request.session.lastAccessedTime }
-        return request.remoteAddr
-    }
+    fun getCallerIP(request: HttpServletRequest) = request.remoteAddr
 
     fun getCallerAccessData(request: HttpServletRequest, id: String): String {
-        val logData = """
+        val ipData = IPData(
+            id = id,
+            hostName = request.remoteHost,
+            address = request.remoteAddr,
+            port = "${request.remotePort}",
+            userAgent = request.getHeader("user-agent"),
+            dateFormatted = Date(request.session.lastAccessedTime),
+            dateRaw = request.session.lastAccessedTime
+        )
+
+        return ipData.toString()
+    }
+}
+
+data class IPData(
+    val id: String,
+    val hostName: String,
+    val address: String,
+    val port: String,
+    val userAgent: String,
+    val dateFormatted: Date,
+    val dateRaw: Long
+) {
+    override fun toString(): String {
+        return """
             ###
             Path ID: $id
-            Remote host: ${request.remoteHost}
-            Remote address: ${request.remoteAddr}
-            Remote port: ${request.remotePort}
-            Remote user-agent: ${request.getHeader("user-agent")}
-            Date formatted: ${Date(request.session.lastAccessedTime)}
-            Date raw: ${request.session.lastAccessedTime}
+            Remote host: $hostName
+            Remote address: $address
+            Remote port: $port
+            Remote user-agent: $userAgent
+            Date formatted: $dateFormatted
+            Date raw: $dateRaw
             ###
         """.trimIndent()
-
-        return logData
     }
 }
