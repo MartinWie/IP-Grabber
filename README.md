@@ -63,6 +63,15 @@ To customize this port, you can add "--server.port=80"
 sudo java -jar getIP-0.0.1-SNAPSHOT.jar --server.port=80
 ```
 
+For example, on AWS (Amazon Linux)
+
+```
+sudo yum update -y
+sudo amazon-linux-extras install -y java-openjdk11
+wget https://github.com/MartinWie/IP-Grabber/releases/download/getIP-0.0.1-SNAPSHOT.jar/getIP-0.0.1-SNAPSHOT.jar
+sudojava -jar getIP-0.0.1-SNAPSHOT.jar --server.port=80
+```
+
 ## TODOS's
 - tbd
 
