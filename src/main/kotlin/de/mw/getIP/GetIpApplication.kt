@@ -20,6 +20,14 @@ fun main(args: Array<String>) {
 class Default {
     @GetMapping("/")
     @ResponseStatus(HttpStatus.OK)
-    fun default() {
+    fun default() = "OK"
+}
+
+@RestController
+class Hostname {
+    @GetMapping("/host")
+    @ResponseStatus(HttpStatus.OK)
+    fun returnHost(): String {
+        return System.getenv("HOST_HOSTNAME") ?: "HOST_HOSTNAME environment variable is not set"
     }
 }

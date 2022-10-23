@@ -54,7 +54,7 @@ To quickly start the IP-Grabber, you have two options:
 https://hub.docker.com/repository/docker/martinwiechmann/ip-grabber
 
 ```
-docker run -d -p 80:8080 martinwiechmann/ip-grabber:1.1
+docker run -d -p 80:8080 martinwiechmann/ip-grabber:1.3
 ```
 
 After the other person clicked on the link, grab the file from the container:
@@ -97,7 +97,7 @@ sudo usermod -a -G docker ec2-user
 newgrp docker
 sudo systemctl enable docker.service
 sudo systemctl start docker.service
-docker run -d -p 80:8080 martinwiechmann/ip-grabber:1.1
+docker run -d -p 80:8080 -e HOST_HOSTNAME=`hostname` martinwiechmann/ip-grabber:1.3
 ```
 
 ## TODOS's
