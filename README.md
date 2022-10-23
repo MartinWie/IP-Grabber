@@ -50,7 +50,7 @@ In combination with the /photo/... endpoint name, you can probably make up a sto
 
 To quickly start the IP-Grabber, you have two options:
 
-### 1: Use the Docker image
+#### 1: Use the Docker image
 https://hub.docker.com/repository/docker/martinwiechmann/ip-grabber
 
 ```
@@ -63,7 +63,7 @@ After the other person clicked on the link, grab the file from the container:
 docker cp <containerId>:/root/clickers.log clickers.log
 ```
 
-### 2: Download the latest release and run
+#### 2: Download the latest release and run
 
 Run it on any server with
 
@@ -77,6 +77,7 @@ To customize this port, you can add "--server.port=80"
 sudo java -jar getIP-0.0.1-SNAPSHOT.jar --server.port=80
 ```
 
+### Sample setups:
 
 For example, on AWS (Amazon Linux)
 
