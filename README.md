@@ -48,17 +48,31 @@ In combination with the /photo/... endpoint name, you can probably make up a sto
 
 ## Quick usage 
 
-Download the latest release.
+To quickly start the IP-Grabber, you have two options:
 
-Run it on any server with 
+###1: Use the Docker image
+https://hub.docker.com/repository/docker/martinwiechmann/ip-grabber
+
+```
+docker run -d -p 80:8080 martinwiechmann/ip-grabber:1.1
+```
+
+After the other person clicked on the link, grab the file from the container:
+
+```
+docker cp <containerId>:/root/clickers.log clickers.log
+```
+
+###2: Download the latest release and run
+
+Run it on any server with
 
 ```
 java -jar getIP-0.0.1-SNAPSHOT.jar 
 ```
 
-The default port is 8080
+The default port is: 8080
 To customize this port, you can add "--server.port=80"
-
 ```
 sudo java -jar getIP-0.0.1-SNAPSHOT.jar --server.port=80
 ```
@@ -71,6 +85,18 @@ sudo yum update -y
 sudo amazon-linux-extras install -y java-openjdk11
 wget https://github.com/MartinWie/IP-Grabber/releases/download/getIP-0.0.1-SNAPSHOT.jar/getIP-0.0.1-SNAPSHOT.jar
 sudo java -jar getIP-0.0.1-SNAPSHOT.jar --server.port=80
+```
+
+Or with Docker:
+
+```
+sudo yum update -y
+sudo yum install -y docker
+sudo usermod -a -G docker ec2-user
+newgrp docker
+sudo systemctl enable docker.service
+sudo systemctl start docker.service
+docker run -d -p 80:8080 martinwiechmann/ip-grabber:1.1
 ```
 
 ## TODOS's

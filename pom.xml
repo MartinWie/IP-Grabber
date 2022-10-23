@@ -15,6 +15,7 @@
 	<description>Playing around with spring and Kotlin</description>
 
 	<properties>
+		<start-class>de.mw.getIP.GetIpApplicationKt</start-class>
 		<java.version>11</java.version>
 		<kotlin.version>1.5.20</kotlin.version>
 	</properties>
